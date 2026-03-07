@@ -60,7 +60,7 @@ const HomePage = () => {
               on higher education systems,<br />credentials and institutions worldwide
             </p>
 
-            <div className="relative mb-3">
+            <div class Name="relative mb-3">
               <select
                 value={searchCountry}
                 onChange={(e) => setSearchCountry(e.target.value)}

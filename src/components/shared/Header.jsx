@@ -12,11 +12,11 @@ export default function Header() {
     ];
 
     return (
-        <header className="bg-[#00355B] text-white shadow-md">
+        <header className="bg-[#fff] text-white shadow-md">
             <div className="max-w-7xl mx-auto px-4 lg:px-0 h-20 flex items-center justify-between">
 
                 {/* Logo */}
-                <Link href="/" className="flex items-center">
+                <Link href="/" className="flex items-end">
                     <Image
                         src="https://res.cloudinary.com/dg83pvgls/image/upload/v1772527599/logo_czibi3.png"
                         alt="WHED Logo"
@@ -34,7 +34,7 @@ export default function Header() {
                             <li key={item.name}>
                                 <Link
                                     href={item.link}
-                                    className="hover:text-[#1EC6E6] transition-colors duration-300"
+                                    className="hover:text-[#1EC6E6] text-[#00355B] transition-colors duration-300"
                                 >
                                     {item.name}
                                 </Link>
@@ -45,14 +45,6 @@ export default function Header() {
 
                 {/* Actions */}
                 <div className="flex items-center gap-4">
-                    <Link
-                        href="/login"
-                        className="flex items-center gap-2 px-4 py-2 border border-white/30 rounded-md hover:bg-white/10 transition"
-                    >
-                        <CiUser className="text-lg" />
-                        <span className="text-sm font-medium">Login</span>
-                    </Link>
-
                     <Link
                         href="/donate"
                         className="flex items-center gap-2 px-4 py-2 bg-[#1EC6E6] text-[#00355B] font-semibold rounded-md hover:bg-[#17b2cc] transition"

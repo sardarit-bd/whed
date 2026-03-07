@@ -59,44 +59,68 @@ const detailsMap = {
 const stylingFunction = (context) => {
     const maxValue = 1600;
     const opacityLevel =
-        0.35 + (0.65 * (context.countryValue - context.minValue)) / (maxValue - context.minValue);
+        0.35 +
+        (0.65 * (context.countryValue - context.minValue)) /
+        (maxValue - context.minValue);
+
     return {
         fill: "#00b4d8",
         fillOpacity: isNaN(opacityLevel) ? 0.15 : Math.min(opacityLevel, 1),
         stroke: "#ffffff",
         strokeWidth: 0.6,
-        strokeOpacity: 1,
         cursor: "pointer",
     };
 };
 
 const WorldMapComponent = ({ onCountryClick }) => {
     const [popup, setPopup] = useState(null);
+    const [zoom, setZoom] = useState(1);
 
-    const handleClick = (e, countryCode, countryName, countryValue) => {
+    const zoomIn = () => {
+        setZoom((z) => Math.min(z + 0.3, 3));
+    };
+
+    const zoomOut = () => {
+        setZoom((z) => Math.max(z - 0.3, 1));
+    };
+
+    const handleClick = (e, countryCode, countryName) => {
         const details = detailsMap[countryCode];
         setPopup(details ? { ...details } : null);
         if (details) onCountryClick?.(countryName, details);
     };
 
     return (
-        <div className="relative w-full">
-            {/* Zoom buttons — decorative, matching screenshot */}
-            <div className="absolute top-2 left-2 z-10 flex flex-col gap-0.5">
-                <button className="w-6 h-6 bg-white border border-gray-300 text-gray-600 text-sm font-bold flex items-center justify-center rounded-sm shadow hover:bg-gray-50">+</button>
-                <button className="w-6 h-6 bg-white border border-gray-300 text-gray-600 text-sm font-bold flex items-center justify-center rounded-sm shadow hover:bg-gray-50">−</button>
+        <div className="relative w-full overflow-hidden">
+
+            {/* Zoom buttons */}
+            <div className="absolute top-2 left-2 z-10 flex flex-col">
+                <button
+                    onClick={zoomIn}
+                    className="w-7 h-7 bg-white border text-sm font-bold shadow"
+                >
+                    +
+                </button>
+                <button
+                    onClick={zoomOut}
+                    className="w-7 h-7 bg-white border text-sm font-bold shadow"
+                >
+                    −
+                </button>
             </div>
 
-            {/* Map */}
-            <div className="w-full">
+            {/* Map container */}
+            <div
+                className="transition-transform duration-300 origin-center"
+                style={{ transform: `scale(${zoom})` }}
+            >
                 <WorldMap
                     richInteraction
                     backgroundColor="#ffffff"
                     borderColor="#ffffff"
                     color="#097f9c"
-                    tooltipBgColor="#ffffff"
+                    tooltipBgColor="#1a589e"
                     valueSuffix=" universities"
-                    valuePrefix=""
                     size="responsive"
                     data={universitiesData}
                     styleFunction={stylingFunction}
@@ -104,27 +128,28 @@ const WorldMapComponent = ({ onCountryClick }) => {
                 />
             </div>
 
-            {/* Popup card — positioned like in the screenshot (center-left on map) */}
+            {/* Popup */}
             {popup && (
                 <div
                     className="absolute z-20 bg-white border border-[#00b4d8] rounded shadow-lg text-center"
                     style={{ top: "30%", left: "22%", minWidth: 130 }}
                 >
-                    {/* Teal header */}
                     <div className="bg-[#00b4d8] text-white text-xs font-bold px-4 py-1.5 rounded-t">
                         {popup.name}
                     </div>
-                    {/* Stats */}
-                    <div className="px-4 py-2 text-xs text-gray-700 space-y-0.5">
+
+                    <div className="px-4 py-2 text-xs text-gray-700">
                         <p>Public = <b>{popup.public}</b></p>
                         <p>Private = <b>{popup.private}</b></p>
                         <p>Total = <b>{popup.total}</b></p>
                     </div>
-                    {/* Close */}
+
                     <button
                         onClick={() => setPopup(null)}
-                        className="absolute top-0.5 right-1.5 text-white text-xs font-bold leading-none hover:opacity-70"
-                    >×</button>
+                        className="absolute top-1 right-2 text-white text-xs font-bold"
+                    >
+                        ×
+                    </button>
                 </div>
             )}
         </div>

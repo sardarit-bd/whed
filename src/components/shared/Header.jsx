@@ -20,7 +20,7 @@ export default function Header() {
     };
 
     return (
-        <header className="bg-[#FAFAFA] text-white shadow-md py-5 relative">
+        <header className="bg-[#FAFAFA] text-white shadow-md py-2 relative">
             <div className="cs-container mx-auto px-4 lg:px-0 flex items-center justify-between">
 
                 {/* Logo */}
@@ -28,7 +28,7 @@ export default function Header() {
                     <Image
                         src="https://res.cloudinary.com/dg83pvgls/image/upload/v1772527599/logo_czibi3.png"
                         alt="WHED Logo"
-                        width={180}
+                        width={120}
                         height={40}
                         priority
                         className="object-contain"
@@ -43,7 +43,7 @@ export default function Header() {
                                 <li key={item.name}>
                                     <Link
                                         href={item.link}
-                                        className="hover:text-[var(--primary-color)] hover:border-b border-[var(--text-primary)] text-xl text-[var(--text-primary)] transition-colors duration-300"
+                                        className="hover:text-[var(--primary-color)] hover:border-b border-[var(--text-primary)] text-lg text-[var(--text-primary)] transition-colors duration-300"
                                     >
                                         {item.name}
                                     </Link>
@@ -56,7 +56,7 @@ export default function Header() {
                     <div className="flex items-center gap-4">
                         <Link
                             href="/donate"
-                            className="hidden md:flex  font-[var(--font-inter)] items-center gap-2 px-8 py-5 text-xl font-medium bg-[var(--primary-color)] rounded-lg transition"
+                            className="hidden md:flex  font-[var(--font-inter)] items-center gap-2 px-8 py-3 text-lg font-medium bg-[var(--primary-color)] rounded-lg transition"
                         >
                             <Image src='/images/love-react.png' width={24} height={24} alt="love-react" />
                             <span>Donate</span>

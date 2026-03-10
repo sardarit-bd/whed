@@ -3,6 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --text-primary: #212121;
+  --primary-color: #0081A0;
 }
 
 @theme inline {
@@ -22,5 +24,12 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+ font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+}
+
+.cs-container {
+  max-width: 1320px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
 }

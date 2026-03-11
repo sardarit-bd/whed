@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+// import { ComposableMap, Marker, ZoomableGroup } from "react-simple-maps";
 
 const WorldMap = dynamic(() => import("@/components/Worldmap"), { ssr: false });
 
@@ -28,21 +29,20 @@ const HomePage = () => {
         >
 
           {/* ── LEFT: Logos ── */}
-          <div className="bg-white rounded-xl p-4 border border-[#00000026] flex lg:flex-col items-center gap-4 order-3 lg:order-1 lg:col-span-2">
+          <div className="bg-white rounded-xl p-4 border border-[#00000026] flex lg:flex-col gap-4 order-3 lg:order-1 lg:col-span-2">
             <Image
               src="https://res.cloudinary.com/dg83pvgls/image/upload/v1772696794/iau_heajcc.png"
               alt="IAU Logo"
               width={200}
               height={100}
-              className="object-contain w-full"
+              className="object-contain lg:w-full"
             />
-            <p className="text-[10px] text-gray-400 text-center">In collaboration with</p>
             <Image
               src="https://res.cloudinary.com/dg83pvgls/image/upload/v1772696795/unesco_u3r2ly.png"
               alt="UNESCO Logo"
               width={200}
               height={100}
-              className="object-contain w-full"
+              className="object-contain lg:w-full"
             />
           </div>
 

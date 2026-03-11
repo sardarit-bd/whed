@@ -1,5 +1,5 @@
 "use client";
-import React, { memo, useState, useRef, useEffect } from "react";
+import React, { memo, useState } from "react";
 import { WorldMap } from "react-svg-worldmap";
 
 const universitiesData = [
@@ -58,10 +58,11 @@ const detailsMap = {
 
 const stylingFunction = (context) => {
   const maxValue = 1600;
+
   const opacityLevel =
     0.35 +
     (0.65 * (context.countryValue - context.minValue)) /
-    (maxValue - context.minValue);
+      (maxValue - context.minValue);
 
   return {
     fill: "#00b4d8",
@@ -72,104 +73,71 @@ const stylingFunction = (context) => {
   };
 };
 
-const DRAG_THRESHOLD = 5; // pixels
-
 const WorldMapComponent = ({ onCountryClick }) => {
   const [popup, setPopup] = useState(null);
   const [zoom, setZoom] = useState(1);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  const containerRef = useRef(null);
-  const [mapDimensions, setMapDimensions] = useState({ width: 0, height: 0 });
 
-  useEffect(() => {
-    if (containerRef.current) {
-      const updateDimensions = () => {
-        setMapDimensions({
-          width: containerRef.current.offsetWidth,
-          height: containerRef.current.offsetHeight,
-        });
-      };
-      updateDimensions();
-      window.addEventListener("resize", updateDimensions);
-      return () => window.removeEventListener("resize", updateDimensions);
-    }
-  }, []);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [dragging, setDragging] = useState(false);
+  const [start, setStart] = useState({ x: 0, y: 0 });
 
   const zoomIn = () => setZoom((z) => Math.min(z + 0.3, 3));
   const zoomOut = () => setZoom((z) => Math.max(z - 0.3, 1));
 
-  const handleClick = (e) => {
-    const details = detailsMap[e.countryCode];
+  const handleClick = (e, countryCode, countryName) => {
+    const details = detailsMap[countryCode];
     setPopup(details ? { ...details } : null);
-    if (details) onCountryClick?.(e.countryName, details);
+    if (details) onCountryClick?.(countryName, details);
   };
 
-  // Mouse drag
+  // mouse drag
   const handleMouseDown = (e) => {
-    console.log("parent mousedown");
-    e.stopPropagation();
-    setDragStart({ x: e.clientX + 10, y: e.clientY });
-    setIsDragging(true);
+    setDragging(true);
+    setStart({
+      x: e.clientX - position.x,
+      y: e.clientY - position.y,
+    });
   };
 
   const handleMouseMove = (e) => {
-    if (!isDragging) return;
+    if (!dragging) return;
 
-    const dx = e.clientX - dragStart.x;
-    const dy = e.clientY - dragStart.y;
-
-    const maxX = mapDimensions.width * (zoom - 1) / 2;
-    const maxY = mapDimensions.height * (zoom - 1) / 2;
-
-    setPosition((prev) => ({
-      x: Math.min(Math.max(prev.x + dx, -maxX), maxX),
-      y: Math.min(Math.max(prev.y + dy, -maxY), maxY),
-    }));
-
-    setDragStart({ x: e.clientX, y: e.clientY });
+    setPosition({
+      x: e.clientX - start.x,
+      y: e.clientY - start.y,
+    });
   };
 
-  const handleMouseUp = (e) => {
-    setIsDragging(false);
-  };
+  const handleMouseUp = () => setDragging(false);
 
-  // Touch drag
+  // touch drag (mobile)
   const handleTouchStart = (e) => {
     const touch = e.touches[0];
-    setDragStart({ x: touch.clientX, y: touch.clientY });
-    setIsDragging(true);
+
+    setDragging(true);
+    setStart({
+      x: touch.clientX - position.x,
+      y: touch.clientY - position.y,
+    });
   };
 
   const handleTouchMove = (e) => {
-    if (!isDragging) return;
+    if (!dragging) return;
 
     const touch = e.touches[0];
-    const dx = touch.clientX - dragStart.x;
-    const dy = touch.clientY - dragStart.y;
 
-    const maxX = mapDimensions.width * (zoom - 1) / 2;
-    const maxY = mapDimensions.height * (zoom - 1) / 2;
-
-    setPosition((prev) => ({
-      x: Math.min(Math.max(prev.x + dx, -maxX), maxX),
-      y: Math.min(Math.max(prev.y + dy, -maxY), maxY),
-    }));
-
-    setDragStart({ x: touch.clientX, y: touch.clientY });
+    setPosition({
+      x: touch.clientX - start.x,
+      y: touch.clientY - start.y,
+    });
   };
 
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-  };
+  const handleTouchEnd = () => setDragging(false);
 
   return (
     <div
-      ref={containerRef}
-      className={`relative w-full h-full min-h-[400px] overflow-hidden select-none ${isDragging ? "cursor-grabbing" : "cursor-grab"
-        }`}
-      onMouseDownCapture={(e) => handleMouseDown(e)}
+      className="relative w-full overflow-hidden cursor-grab active:cursor-grabbing"
+      onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
@@ -177,19 +145,17 @@ const WorldMapComponent = ({ onCountryClick }) => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Zoom */}
-      <div className="absolute top-2 left-2 z-10 flex flex-col gap-1">
+      {/* Zoom buttons */}
+      <div className="absolute top-2 left-2 z-10 flex flex-col">
         <button
           onClick={zoomIn}
-          className="w-8 h-8 bg-white border border-gray-300 text-lg font-bold shadow-md hover:bg-gray-50 transition-colors rounded"
-          aria-label="Zoom in"
+          className="w-7 h-7 bg-white border text-sm font-bold shadow"
         >
           +
         </button>
         <button
           onClick={zoomOut}
-          className="w-8 h-8 bg-white border border-gray-300 text-lg font-bold shadow-md hover:bg-gray-50 transition-colors rounded"
-          aria-label="Zoom out"
+          className="w-7 h-7 bg-white border text-sm font-bold shadow"
         >
           −
         </button>
@@ -197,66 +163,49 @@ const WorldMapComponent = ({ onCountryClick }) => {
 
       {/* Map */}
       <div
-        className="w-full h-full transition-transform duration-100 ease-out"
-        id="worldmap"
+        className="transition-transform duration-200 origin-center"
         style={{
           transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
-          transformOrigin: "center",
         }}
       >
         <WorldMap
           richInteraction
           backgroundColor="#ffffff"
           borderColor="#ffffff"
-          color="#0081A0"
+          color="#097f9c"
           tooltipBgColor="#1a589e"
-        
           valueSuffix=" universities"
           size="responsive"
           data={universitiesData}
           styleFunction={stylingFunction}
-          onClickFunction={(e) => handleClick(e)}
+          onClickFunction={handleClick}
         />
       </div>
 
       {/* Popup */}
       {popup && (
         <div
-          className="absolute z-20 bg-white border border-[var(--secondary-color)] rounded-lg shadow-xl text-center"
-          style={{
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            minWidth: 180,
-            maxWidth: 250,
-          }}
+          className="absolute z-20 bg-white border border-[var(--secondary-color)] rounded shadow-lg text-center"
+          style={{ top: "30%", left: "22%", minWidth: 130 }}
         >
-          <div className="bg-[var(--secondary-color)] text-white text-sm font-semibold px-4 py-2 rounded-t-lg">
-            {popup.name}
+          <div className="bg-[var(--secondary-color)] text-white text-xs font-bold px-4 py-1.5 rounded-t">
+            {popup.name} - Sohel
           </div>
-          <div className="px-4 py-3 text-sm text-gray-700 space-y-1">
-            <p className="flex justify-between">
-              <span>Public:</span>
-              <span className="font-semibold">{popup.public}</span>
-            </p>
-            <p className="flex justify-between">
-              <span>Private:</span>
-              <span className="font-semibold">{popup.private}</span>
-            </p>
-            <p className="flex justify-between border-t pt-1 mt-1">
-              <span>Total:</span>
-              <span className="font-semibold">{popup.total}</span>
-            </p>
+
+          <div className="px-4 py-2 text-xs text-gray-700">
+            <p>Public = <b>{popup.public}</b></p>
+            <p>Private = <b>{popup.private}</b></p>
+            <p>Total = <b>{popup.total}</b></p>
           </div>
+
           <button
             onClick={() => setPopup(null)}
-            className="absolute -top-2 -right-2 w-6 h-6 bg-white border border-[var(--secondary-color)] rounded-full text-[var(--secondary-color)] text-sm font-bold hover:bg-[var(--secondary-color)] hover:text-white transition-colors shadow-md"
+            className="absolute top-1 right-2 text-white text-xs font-bold"
           >
             ×
           </button>
         </div>
       )}
-     
     </div>
   );
 };

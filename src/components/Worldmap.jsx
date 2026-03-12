@@ -1,6 +1,7 @@
 "use client";
+import WorldMap from "@/app/react-svg-worldmap/dist";
 import React, { memo, useState, useRef, useEffect } from "react";
-import { WorldMap } from "react-svg-worldmap";
+// import { WorldMap } from "react-svg-worldmap";
 
 const universitiesData = [
   { country: "CA", value: 148 },
@@ -72,7 +73,6 @@ const stylingFunction = (context) => {
   };
 };
 
-const DRAG_THRESHOLD = 5; // pixels
 
 const WorldMapComponent = ({ onCountryClick }) => {
   const [popup, setPopup] = useState(null);
@@ -108,7 +108,6 @@ const WorldMapComponent = ({ onCountryClick }) => {
 
   // Mouse drag
   const handleMouseDown = (e) => {
-    console.log("parent mousedown");
     e.stopPropagation();
     setDragStart({ x: e.clientX + 10, y: e.clientY });
     setIsDragging(true);
@@ -164,6 +163,15 @@ const WorldMapComponent = ({ onCountryClick }) => {
     setIsDragging(false);
   };
 
+  const handleMouseEnter = (context, event) => {
+    console.log(context)
+    const details = detailsMap[context.countryCode];
+    setPopup(details ? { ...details } : null);
+    if (details) onCountryClick?.(context.countryName, details);
+  }
+  const handleMouseLeave = (event) => {
+   
+  }
   return (
     <div
       ref={containerRef}
@@ -176,6 +184,10 @@ const WorldMapComponent = ({ onCountryClick }) => {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
+      onDoubleClickCapture={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      }}
     >
       {/* Zoom */}
       <div className="absolute top-2 left-2 z-10 flex flex-col gap-1">
@@ -210,12 +222,14 @@ const WorldMapComponent = ({ onCountryClick }) => {
           borderColor="#ffffff"
           color="#0081A0"
           tooltipBgColor="#1a589e"
-        
+
           valueSuffix=" universities"
           size="responsive"
           data={universitiesData}
           styleFunction={stylingFunction}
           onClickFunction={(e) => handleClick(e)}
+          onMouseEnter={(context, event) => handleMouseEnter(context, event)}
+          onMouseLeave={(event) => handleMouseLeave(event)}
         />
       </div>
 
@@ -230,6 +244,7 @@ const WorldMapComponent = ({ onCountryClick }) => {
             minWidth: 180,
             maxWidth: 250,
           }}
+          onMouseEnter={(e) => handleMouseEnter(popup, e)}
         >
           <div className="bg-[var(--secondary-color)] text-white text-sm font-semibold px-4 py-2 rounded-t-lg">
             {popup.name}
@@ -248,15 +263,15 @@ const WorldMapComponent = ({ onCountryClick }) => {
               <span className="font-semibold">{popup.total}</span>
             </p>
           </div>
-          <button
+          {/* <button
             onClick={() => setPopup(null)}
             className="absolute -top-2 -right-2 w-6 h-6 bg-white border border-[var(--secondary-color)] rounded-full text-[var(--secondary-color)] text-sm font-bold hover:bg-[var(--secondary-color)] hover:text-white transition-colors shadow-md"
           >
             ×
-          </button>
+          </button> */}
         </div>
       )}
-     
+
     </div>
   );
 };

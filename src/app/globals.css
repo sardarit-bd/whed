@@ -49,6 +49,6 @@ svg {
 }
 
 
-#worldmap svg>g:not(:first-of-type) {
-  display: none;
+#worldmap svg > g:not(:first-of-type) {
+    display: none;
 }

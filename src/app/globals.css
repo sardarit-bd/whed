@@ -95,17 +95,18 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
 svg {
   pointer-events: all;
 }
 
 #worldmap path {
-    fill: #0081A0 !important;
-    fill-opacity: 1 !important;
+  fill: #0081A0 !important;
+  fill-opacity: 1 !important;
 }
 
 #worldmap .worldmap__region--hover {
-    fill: #00375B !important;
+  fill: #00375B !important;
 }
 
 #worldmap svg > g:not(:first-of-type) {

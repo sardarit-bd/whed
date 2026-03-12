@@ -20,7 +20,7 @@ const HomePage = () => {
 
   const handleCountryClick = (name, data) => {
     setSelectedCountry({ name, data });
-    setSearchCountry(name);
+    // setSearchCountry(name);
     setOpen(data)
   };
 

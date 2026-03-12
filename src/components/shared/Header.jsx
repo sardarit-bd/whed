@@ -10,8 +10,8 @@ export default function Header() {
     const navitems = [
         { name: "Home", link: "/" },
         { name: "About", link: "/about" },
-        { name: "Global WHED ID", link: "/" },
-        { name: "How to Use", link: "/" },
+        { name: "Global WHED ID", link: "/whedid" },
+        { name: "How to Use", link: "/searchwhed" },
         { name: "Contact", link: "/contact" },
     ];
 

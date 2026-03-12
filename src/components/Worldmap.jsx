@@ -1,36 +1,65 @@
 "use client";
 import WorldMap from "@/app/react-svg-worldmap/dist";
 import React, { memo, useState, useRef, useEffect } from "react";
-// import { WorldMap } from "react-svg-worldmap";
 
-const universitiesData = [
-  { country: "CA", value: 148 },
-  { country: "US", value: 250 },
-  { country: "DE", value: 330 },
-  { country: "FR", value: 240 },
-  { country: "BR", value: 205 },
-  { country: "IN", value: 1550 },
-  { country: "CN", value: 1600 },
-  { country: "AU", value: 50 },
-  { country: "GB", value: 310 },
-  { country: "JP", value: 780 },
-  { country: "RU", value: 530 },
-  { country: "ZA", value: 120 },
-  { country: "MX", value: 190 },
-  { country: "AR", value: 130 },
-  { country: "KR", value: 420 },
-  { country: "IT", value: 280 },
-  { country: "ES", value: 260 },
-  { country: "PL", value: 140 },
-  { country: "NG", value: 90 },
-  { country: "EG", value: 75 },
-  { country: "TR", value: 210 },
-  { country: "ID", value: 310 },
-  { country: "PK", value: 180 },
-  { country: "BD", value: 150 },
+
+export const universitiesData = [
+  { country: "CA", name: "Canada", value: 148 },
+  { country: "US", name: "United States", value: 250 },
+  { country: "DE", name: "Germany", value: 330 },
+  { country: "FR", name: "France", value: 240 },
+  { country: "BR", name: "Brazil", value: 205 },
+  { country: "IN", name: "India", value: 1550 },
+  { country: "CN", name: "China", value: 1600 },
+  { country: "AU", name: "Australia", value: 50 },
+  { country: "GB", name: "United Kingdom", value: 310 },
+  { country: "JP", name: "Japan", value: 780 },
+  { country: "RU", name: "Russia", value: 530 },
+  { country: "ZA", name: "South Africa", value: 120 },
+  { country: "MX", name: "Mexico", value: 190 },
+  { country: "AR", name: "Argentina", value: 130 },
+  { country: "KR", name: "South Korea", value: 420 },
+  { country: "IT", name: "Italy", value: 280 },
+  { country: "ES", name: "Spain", value: 260 },
+  { country: "PL", name: "Poland", value: 140 },
+  { country: "NG", name: "Nigeria", value: 90 },
+  { country: "EG", name: "Egypt", value: 75 },
+  { country: "TR", name: "Turkey", value: 210 },
+  { country: "ID", name: "Indonesia", value: 310 },
+  { country: "PK", name: "Pakistan", value: 180 },
+  { country: "BD", name: "Bangladesh", value: 150 },
+
+  { country: "SA", name: "Saudi Arabia", value: 95 },
+  { country: "AE", name: "United Arab Emirates", value: 60 },
+  { country: "TH", name: "Thailand", value: 160 },
+  { country: "MY", name: "Malaysia", value: 120 },
+  { country: "SG", name: "Singapore", value: 35 },
+  { country: "PH", name: "Philippines", value: 200 },
+  { country: "VN", name: "Vietnam", value: 180 },
+  { country: "IR", name: "Iran", value: 350 },
+  { country: "IQ", name: "Iraq", value: 65 },
+  { country: "UA", name: "Ukraine", value: 200 },
+  { country: "NL", name: "Netherlands", value: 95 },
+  { country: "BE", name: "Belgium", value: 85 },
+  { country: "CH", name: "Switzerland", value: 60 },
+  { country: "SE", name: "Sweden", value: 70 },
+  { country: "NO", name: "Norway", value: 45 },
+  { country: "DK", name: "Denmark", value: 40 },
+  { country: "FI", name: "Finland", value: 50 },
+  { country: "AT", name: "Austria", value: 65 },
+  { country: "PT", name: "Portugal", value: 75 },
+  { country: "GR", name: "Greece", value: 80 },
+  { country: "CL", name: "Chile", value: 90 },
+  { country: "CO", name: "Colombia", value: 120 },
+  { country: "PE", name: "Peru", value: 110 },
+  { country: "VE", name: "Venezuela", value: 70 },
+  { country: "KE", name: "Kenya", value: 65 },
+  { country: "GH", name: "Ghana", value: 55 },
+  { country: "TZ", name: "Tanzania", value: 50 },
+  { country: "UG", name: "Uganda", value: 40 },
+  { country: "ET", name: "Ethiopia", value: 60 }
 ];
-
-const detailsMap = {
+export const detailsMap = {
   CA: { name: "Canada", public: 122, private: 26, total: 148 },
   US: { name: "United States", public: 200, private: 50, total: 250 },
   DE: { name: "Germany", public: 250, private: 80, total: 330 },
@@ -55,6 +84,36 @@ const detailsMap = {
   ID: { name: "Indonesia", public: 100, private: 210, total: 310 },
   PK: { name: "Pakistan", public: 80, private: 100, total: 180 },
   BD: { name: "Bangladesh", public: 50, private: 100, total: 150 },
+
+  SA: { name: "Saudi Arabia", public: 60, private: 35, total: 95 },
+  AE: { name: "United Arab Emirates", public: 25, private: 35, total: 60 },
+  TH: { name: "Thailand", public: 80, private: 80, total: 160 },
+  MY: { name: "Malaysia", public: 50, private: 70, total: 120 },
+  SG: { name: "Singapore", public: 15, private: 20, total: 35 },
+  PH: { name: "Philippines", public: 90, private: 110, total: 200 },
+  VN: { name: "Vietnam", public: 90, private: 90, total: 180 },
+  IR: { name: "Iran", public: 200, private: 150, total: 350 },
+  IQ: { name: "Iraq", public: 35, private: 30, total: 65 },
+  UA: { name: "Ukraine", public: 120, private: 80, total: 200 },
+  NL: { name: "Netherlands", public: 55, private: 40, total: 95 },
+  BE: { name: "Belgium", public: 45, private: 40, total: 85 },
+  CH: { name: "Switzerland", public: 30, private: 30, total: 60 },
+  SE: { name: "Sweden", public: 40, private: 30, total: 70 },
+  NO: { name: "Norway", public: 30, private: 15, total: 45 },
+  DK: { name: "Denmark", public: 25, private: 15, total: 40 },
+  FI: { name: "Finland", public: 30, private: 20, total: 50 },
+  AT: { name: "Austria", public: 35, private: 30, total: 65 },
+  PT: { name: "Portugal", public: 40, private: 35, total: 75 },
+  GR: { name: "Greece", public: 45, private: 35, total: 80 },
+  CL: { name: "Chile", public: 40, private: 50, total: 90 },
+  CO: { name: "Colombia", public: 60, private: 60, total: 120 },
+  PE: { name: "Peru", public: 50, private: 60, total: 110 },
+  VE: { name: "Venezuela", public: 40, private: 30, total: 70 },
+  KE: { name: "Kenya", public: 35, private: 30, total: 65 },
+  GH: { name: "Ghana", public: 25, private: 30, total: 55 },
+  TZ: { name: "Tanzania", public: 20, private: 30, total: 50 },
+  UG: { name: "Uganda", public: 15, private: 25, total: 40 },
+  ET: { name: "Ethiopia", public: 35, private: 25, total: 60 },
 };
 
 const stylingFunction = (context) => {
@@ -102,7 +161,6 @@ const WorldMapComponent = ({ onCountryClick }) => {
 
   const handleClick = (e) => {
     const details = detailsMap[e.countryCode];
-    setPopup(details ? { ...details } : null);
     if (details) onCountryClick?.(e.countryName, details);
   };
 
@@ -164,14 +222,21 @@ const WorldMapComponent = ({ onCountryClick }) => {
   };
 
   const handleMouseEnter = (context, event) => {
-    console.log(context)
     const details = detailsMap[context.countryCode];
     setPopup(details ? { ...details } : null);
-    if (details) onCountryClick?.(context.countryName, details);
+    // if (details) onCountryClick?.(context.countryName, details);
   }
   const handleMouseLeave = (event) => {
-   
+    setPopup(null)
   }
+  useEffect(() => {
+    if (zoom === 1) {
+      setPosition({
+        x: 0,
+        y: 0
+      })
+    }
+  }, [zoom])
   return (
     <div
       ref={containerRef}
@@ -236,13 +301,10 @@ const WorldMapComponent = ({ onCountryClick }) => {
       {/* Popup */}
       {popup && (
         <div
-          className="absolute z-20 bg-white border border-[var(--secondary-color)] rounded-lg shadow-xl text-center"
+          className="absolute z-20 min-w-[80px] max-w-[150px] bg-white border border-[var(--secondary-color)] rounded-lg shadow-xl text-center"
           style={{
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            minWidth: 180,
-            maxWidth: 250,
+            top: "0%",
+            right: "0%",
           }}
           onMouseEnter={(e) => handleMouseEnter(popup, e)}
         >
@@ -271,7 +333,6 @@ const WorldMapComponent = ({ onCountryClick }) => {
           </button> */}
         </div>
       )}
-
     </div>
   );
 };

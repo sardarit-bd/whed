@@ -68,7 +68,7 @@ const HomePage = () => {
               The unique database providing <i className="text-[var(--primary-color)] font-semibold">authoritative information</i> on higher education systems, credentials, and institutions globally
             </p>
 
-            <div class Name="relative my-5">
+            <div className="relative my-5">
               <Select value={searchCountry} onValueChange={handleChangeValue}>
                 <SelectTrigger
                   className="

@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import CountrySelectionModal from "@/components/CountrySelectionModal";
+import { detailsMap, universitiesData } from "@/components/Worldmap";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 // import { ComposableMap, Marker, ZoomableGroup } from "react-simple-maps";
 
 const WorldMap = dynamic(() => import("@/components/Worldmap"), { ssr: false });
@@ -12,11 +15,20 @@ const HomePage = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [searchWhedId, setSearchWhedId] = useState("");
   const [memberFilter, setMemberFilter] = useState("all");
+  const [open, setOpen] = useState(null)
+  const [value, setValue] = useState("education");
 
   const handleCountryClick = (name, data) => {
     setSelectedCountry({ name, data });
-    setSearchCountry(name);
+    // setSearchCountry(name);
+    setOpen(data)
   };
+
+  const handleChangeValue = (value) => {
+    setSearchCountry(value)
+    const details = detailsMap[value];
+    setOpen(details)
+  }
 
   return (
     <div className="min-h-screen">
@@ -57,21 +69,29 @@ const HomePage = () => {
             </p>
 
             <div class Name="relative my-5">
-              <select
-                value={searchCountry}
-                onChange={(e) => setSearchCountry(e.target.value)}
-                className="w-full px-3 py-2.5 rounded-lg border border-gray-200 text-sm text-gray-500 bg-white cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#00b4d8] appearance-none"
-              >
-                <option value="">Choose a country</option>
-                <option>Canada</option>
-                <option>United States</option>
-                <option>Germany</option>
-                <option>France</option>
-                <option>India</option>
-                <option>China</option>
-                <option>Brazil</option>
-                <option>Australia</option>
-              </select>
+              <Select value={searchCountry} onValueChange={handleChangeValue}>
+                <SelectTrigger
+                  className="
+        w-full 
+        h-[42px]
+        text-sm 
+        border-gray-200 
+        focus:ring-1 
+        focus:ring-[var(--primary-color)]
+        text-[var(--text-primary)]
+      "
+                >
+                  <SelectValue placeholder="Choose a country" />
+                </SelectTrigger>
+
+                <SelectContent>
+                  {universitiesData?.map((country) => (
+                    <SelectItem key={country.country} value={country.country}>
+                      {country.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none text-xs">▾</span>
             </div>
 
@@ -168,6 +188,19 @@ const HomePage = () => {
         </div>
 
       </div>
+
+      {open && (
+        <CountrySelectionModal
+          country={open?.name}
+          value={value}
+          onChange={setValue}
+          onCancel={() => setOpen(null)}
+          onConfirm={() => {
+            console.log(value);
+            setOpen(null);
+          }}
+        />
+      )}
     </div>
   );
 };

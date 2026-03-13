@@ -46,11 +46,11 @@ const countries = [
 
 export default function CountryCondition() {
     return (
-        <section className="bg-white px-12 py-16 font-serif">
+        <section className="bg-white px-12 py-16 ">
             <div className="cs-container mx-auto">
 
                 {/* Header */}
-                <h2 className="font-sans font-black uppercase text-[40px] text-[#0d3b5e] text-center leading-tight tracking-wide mb-8">
+                <h2 className=" font-black uppercase text-[40px] text-[#0d3b5e] text-center leading-tight tracking-wide mb-8">
                     What is the condition for a country <br /> to be listed in the WHED?
                 </h2>
 
@@ -69,14 +69,14 @@ export default function CountryCondition() {
                 </p>
 
                 {/* Specificities */}
-                <p className="font-sans font-bold text-[18px] text-[#1a1a1a] mb-4">
+                <p className=" font-bold text-[18px] text-[#1a1a1a] mb-4">
                     Specificities of certain countries:
                 </p>
 
                 <div className="space-y-4">
                     {countries.map(({ name, content }) => (
                         <div key={name} className="border border-[#e0e0e0] rounded-md px-6 py-5 bg-[#F8F9FB]">
-                            <h3 className="font-sans font-bold text-[17px] text-[#1a1a1a] mb-2">{name}</h3>
+                            <h3 className=" font-bold text-[17px] text-[#1a1a1a] mb-2">{name}</h3>
                             {content}
                         </div>
                     ))}

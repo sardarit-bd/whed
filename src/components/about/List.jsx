@@ -52,11 +52,11 @@ const furtherItems = [
 
 export default function HEIConditions() {
     return (
-        <section className="bg-white px-12 py-16 font-serif">
+        <section className="bg-white px-12 py-16 ">
             <div className="cs-container mx-auto">
 
                 {/* Header */}
-                <h2 className="font-sans font-black uppercase text-[40px] text-[#0d3b5e] text-center leading-tight tracking-wide mb-10">
+                <h2 className=" font-black uppercase text-[40px] text-[#0d3b5e] text-center leading-tight tracking-wide mb-10">
                     What are the conditions for an HEI to <br /> be listed in the WHED?
                 </h2>
 
@@ -66,13 +66,13 @@ export default function HEIConditions() {
                         <div
                             key={title}
                             className={`border rounded-md px-5 py-4 flex items-start gap-3 ${variant === "red"
-                                    ? "border-[#e05252] bg-[#fff5f5] border-l-4"
-                                    : "border-[#e0e0e0] bg-white border-l-4 border-l-[#1a6fa0]"
+                                ? "border-[#e05252] bg-[#fff5f5] border-l-4"
+                                : "border-[#e0e0e0] bg-white border-l-4 border-l-[#1a6fa0]"
                                 }`}
                         >
                             {variant === "red" ? <ExemptionIcon /> : <CheckCircleIcon />}
                             <div>
-                                <p className="font-sans font-bold text-[16px] text-[#1a1a1a] mb-1">{title}</p>
+                                <p className=" font-bold text-[16px] text-[#1a1a1a] mb-1">{title}</p>
                                 <p className="text-[15px] text-[#2c2c2c] leading-6">{desc}</p>
                             </div>
                         </div>
@@ -81,7 +81,7 @@ export default function HEIConditions() {
 
                 {/* Further Information Box */}
                 <div className="border border-[#e0e0e0] rounded-md px-6 py-5 bg-white mb-6">
-                    <p className="font-sans font-bold text-[17px] text-[#1a1a1a] mb-4">Further Information:</p>
+                    <p className=" font-bold text-[17px] text-[#1a1a1a] mb-4">Further Information:</p>
                     <ul className="space-y-3">
                         {furtherItems.map((item, i) => (
                             <li key={i} className="flex items-start gap-3 text-[15px] text-[#2c2c2c] leading-6">

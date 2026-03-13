@@ -1,5 +1,5 @@
 import Image from "next/image";
-export default function whedid() {
+export default function Whedid() {
     const goals = [
         "Foster transparency of higher education on a global scale;",
         "Make available information on higher education systems and the list of nationally accredited higher education institutions to all;",
@@ -20,7 +20,7 @@ export default function whedid() {
     ];
 
     return (
-        <main className="min-h-screen bg-white font-sans text-gray-700">
+        <main className="min-h-screen bg-white  text-gray-700">
             <div className="cs-container mx-auto px-6 md:px-0 py-12">
 
                 {/* Section 1 */}

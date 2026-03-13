@@ -81,11 +81,11 @@ const heiSubSections = [
 
 export default function WhatKindOfInformation() {
     return (
-        <section className="bg-white py-12 px-6 font-serif">
+        <section className="bg-white py-12 px-6 ">
             <div className="cs-container mx-auto">
 
                 {/* Page Header */}
-                <h2 className="font-sans font-black uppercase text-[40px] text-[#0d3b5e] text-center leading-tight tracking-wide mb-4">
+                <h2 className=" font-black uppercase text-[40px] text-[#0d3b5e] text-center leading-tight tracking-wide mb-4">
                     What kind of information is in the WHED?
                 </h2>
                 <p className="text-[18px] text-[#2c2c2c] leading-7 text-center max-w-2xl mx-auto mb-10">
@@ -97,7 +97,7 @@ export default function WhatKindOfInformation() {
 
                 {/* Section 1: Education Systems */}
                 <div className="mb-8">
-                    <h3 className="font-sans font-bold text-[24px] text-[#1a6fa0] mb-3">
+                    <h3 className=" font-bold text-[24px] text-[#1a6fa0] mb-3">
                         Education Systems &amp; Credentials
                     </h3>
                     <p className="text-[18px] text-[#2c2c2c] leading-7 mb-4">
@@ -118,7 +118,7 @@ export default function WhatKindOfInformation() {
 
                 {/* Section 2: HEIs */}
                 <div>
-                    <h3 className="font-sans font-bold text-[24px] text-[#1a6fa0] mb-3">
+                    <h3 className=" font-bold text-[24px] text-[#1a6fa0] mb-3">
                         Higher education institutions (HEIs)
                     </h3>
                     <p className="text-[18px] text-[#2c2c2c] leading-7 mb-5">
@@ -130,7 +130,7 @@ export default function WhatKindOfInformation() {
                             <div key={title}>
                                 <div className="flex items-center gap-2 mb-2">
                                     <CheckCircleIcon />
-                                    <span className="font-sans font-bold text-[18px] text-[#1a1a1a]">{title}</span>
+                                    <span className=" font-bold text-[18px] text-[#1a1a1a]">{title}</span>
                                 </div>
                                 <div className="pl-6">{content}</div>
                             </div>

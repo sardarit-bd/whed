@@ -149,7 +149,7 @@ const AccordionItem = ({ title, defaultOpen = false, children }) => {
   const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <div className={`border rounded-lg mb-3 overflow-hidden transition-all duration-200 ${open ? "border rounded-xl border-gray-200" : "border-gray-200"}`}>
+    <div className={`border rounded-lg mb-3 overflow-hidden transition-all duration-200 ${open ? "border rounded-xl border-gray-200" : "border border-l-4 border-[var(--primary-color)]"}`}>
       <button
         onClick={() => setOpen(!open)}
         className={`w-full flex items-center justify-between px-6 py-4 text-left transition-colors duration-200 ${open ? "bg-gray-50" : "bg-white hover:bg-gray-50"}`}

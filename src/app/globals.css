@@ -5,8 +5,11 @@
 
 :root {
   --text-primary: #212121;
+  --text-gray: #4A5565;
   --primary-color: #0081A0;
   --secondary-color: #00375B;
+
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

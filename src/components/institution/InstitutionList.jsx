@@ -1,5 +1,6 @@
 import InstitutionCard from "./InstitutionCard";
 
+
 export default function InstitutionList({
   institutions,
 }) {

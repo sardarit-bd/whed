@@ -240,7 +240,7 @@ const WorldMapComponent = ({ onCountryClick }) => {
   return (
     <div
       ref={containerRef}
-      className={`relative w-full h-full min-h-[400px] overflow-hidden select-none ${isDragging ? "cursor-grabbing" : "cursor-grab"
+      className={`relative w-full h-full overflow-hidden select-none ${isDragging ? "cursor-grabbing" : "cursor-grab"
         }`}
       onMouseDownCapture={(e) => handleMouseDown(e)}
       onMouseMove={handleMouseMove}

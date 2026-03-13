@@ -5,12 +5,12 @@ const bulletItems = [
 
 export default function WhoProvides() {
     return (
-        <section className="px-12 py-16 font-serif">
+        <section className="px-12 py-16 ">
             <div className="cs-container mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-stretch">
 
                 {/* Left: Text Content */}
                 <div className="flex flex-col">
-                    <h2 className="font-sans font-black uppercase text-[40px] text-[#0d3b5e] leading-tight tracking-wide mb-6">
+                    <h2 className=" font-black uppercase text-[40px] text-[#0d3b5e] leading-tight tracking-wide mb-6">
                         Who provides the information?
                     </h2>
 

@@ -6,7 +6,7 @@ export default function HowToSearchPage() {
     );
 
     return (
-        <main className="min-h-screen bg-white text-gray-700 text-sm font-sans">
+        <main className="min-h-screen bg-white text-gray-700 text-sm">
             <div className="cs-container mx-auto px-6 py-10">
 
                 {/* Page Title */}

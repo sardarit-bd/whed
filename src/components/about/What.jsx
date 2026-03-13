@@ -19,12 +19,12 @@ const CheckCircleIcon = () => (
 
 export default function WhatIsWhed() {
     return (
-        <section className="px-12 py-16 font-serif">
+        <section className="px-12 py-16 ">
             <div className="max-w-[1300px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-14 items-start">
 
                 {/* Left: Text Content */}
                 <div>
-                    <h2 className="font-black text-[#0d3b5e] uppercase tracking-wide text-4xl mb-6 leading-tight font-sans">
+                    <h2 className="font-black text-[#0d3b5e] uppercase tracking-wide text-4xl mb-6 leading-tight ">
                         What is the WHED?
                     </h2>
 

@@ -1,5 +1,5 @@
-import InstitutionClasicList from "@/components/InstitutionClasicList";
-import InstitutionList from "@/components/InstitutionList";
+import InstitutionClasicList from "@/components/institution/InstitutionClasicList";
+import InstitutionList from "@/components/institution/InstitutionList";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export default function Home() {

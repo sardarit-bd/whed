@@ -1,6 +1,11 @@
 "use client"
 
 import { useState } from "react";
+import DegreesComponent from "./Degreescomponent";
+import AcademicPeriodicals from "./Academicperiodicals";
+import Statistics from "./Statistics";
+import DivisionsComponent from "./Divisionscomponent";
+import OfficersComponent from "./Officerscomponent";
 
 const data = {
   generalInfo: {
@@ -160,7 +165,7 @@ const AccordionItem = ({ title, defaultOpen = false, children }) => {
         <ChevronIcon open={open} />
       </button>
 
-      <div className={`transition-all duration-300 ease-in-out overflow-hidden ${open ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}`}>
+      <div className={`transition-all duration-300 ease-in-out overflow-hidden ${open ? "opacity-100" : "max-h-0 opacity-0"}`}>
         {children}
       </div>
     </div>
@@ -200,23 +205,23 @@ export default function UniversityInfo() {
           </AccordionItem>
 
           <AccordionItem title="Officers">
-            <Section title="Officers" />
+            <OfficersComponent />
           </AccordionItem>
 
           <AccordionItem title="Divisions">
-            <Section title="Divisions" />
+            <DivisionsComponent />
           </AccordionItem>
 
           <AccordionItem title="Degrees">
-            <Section title="Degrees" />
+            <DegreesComponent />
           </AccordionItem>
 
           <AccordionItem title="Academic Periodicals">
-            <Section title="Academic Periodicals" />
+            <AcademicPeriodicals />
           </AccordionItem>
 
           <AccordionItem title="Student & Staff Numbers">
-            <Section title="Student & Staff Numbers" />
+            <Statistics />
           </AccordionItem>
         </main>
       </div>

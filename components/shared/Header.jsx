@@ -20,7 +20,7 @@ export default function Header() {
     };
 
     return (
-        <header className="bg-[#FAFAFA] text-white shadow-xs py-2 relative">
+        <header className="bg-white text-white shadow-xs py-2 relative">
             <div className="cs-container mx-auto px-4 lg:px-0 flex items-center justify-between">
 
                 {/* Logo */}

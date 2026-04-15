@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import CountrySelectionModal from "../../components/CountryDelectionModal";
 // import { detailsMap, universitiesData } from "../../components/Worldmap";
+import WorldMembersMap from "@/components/WorldMembersMap";
 import Loading from "../../components/shared/Loading";
 import detailsMap from "../../data/MapData/detailsMap";
 import universitiesData from "../../data/MapData/universitiesData";
@@ -26,11 +27,21 @@ const HomePage = () => {
   const [isLoading, setisLoading] = useState(false);
   const [value, setValue] = useState("education");
 
-  // const handleCountryClick = (name, data) => {
-  //   setSelectedCountry({ name, data });
-  //   // setSearchCountry(name);
-  //   setOpen(data)
-  // };
+  const handleCountryClick = (name, data) => {
+
+
+    setisLoading(true);
+    // setSearchCountry(value);
+    // const details = detailsMap[value];
+    // setSelectedCountry(details);
+
+    setTimeout(() => {
+      setisLoading(false);
+      router?.push(`/institution`);
+    }, 1400);
+
+
+  };
 
   const handleChangeValue = (value) => {
 
@@ -52,7 +63,7 @@ const HomePage = () => {
 
       {
         isLoading && (
-          <div className="absolute inset-0 w-screen h-screen bg-black/30 z-50 flex items-center justify-center">
+          <div className="fixed inset-0 w-screen h-screen bg-black/30 z-50 flex items-center justify-center">
             <div className="bg-[var(--primary-color)] w-fit px-5 py-2 rounded-lg text-white font-semibold text-sm">
               <Loading />
             </div>
@@ -133,7 +144,10 @@ const HomePage = () => {
 
 
 
-              <div className="text-center p-5 text-gray-400 flex flex-col items-center gap-3 justify-center h-full">
+              <WorldMembersMap handleCountryClick={handleCountryClick} />
+
+
+              <div className="hidden text-center p-5 text-gray-400 flex flex-col items-center gap-3 justify-center h-full">
                 <h2 className="text-2xl font-bold text-[var(--primary-color)]"> World Map Coming Soon!</h2>
                 In the meantime, select a country from the dropdown above to explore its HEI data.
               </div>

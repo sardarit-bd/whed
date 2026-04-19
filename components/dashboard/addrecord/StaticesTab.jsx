@@ -90,13 +90,36 @@ function StatisticsTab() {
             {/* Academic Staff Section */}
             <Field label="Academic Staff Statistics Year">
                 <div className="relative">
-                    <select className={`${inputBase} appearance-none cursor-pointer`} value={form.academicStaffYear} onChange={set("academicStaffYear")} {...focus}>
+                    <select className={`hidden ${inputBase} appearance-none cursor-pointer`} value={form.academicStaffYear} onChange={set("academicStaffYear")} {...focus}>
                         <option value="">YYYY</option>
                         {years.map((y) => <option key={y} value={y}>{y}</option>)}
                     </select>
                     <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" strokeWidth="2.5"><path d="M6 9l6 6 6-6" /></svg>
                     </div>
+
+
+
+                    <input
+                        className="w-full rounded-lg border border-gray-200 px-2 py-1.5 focus:outline-none"
+                        type="text"
+                        value={form.academicStaffYear}
+                        placeholder="YYYY"
+                        maxLength={4}
+                        onChange={(e) => {
+                            const value = e.target.value;
+
+                            // allow only numbers and max 4 digits
+                            if (/^\d{0,4}$/.test(value)) {
+                                setForm((prev) => ({
+                                    ...prev,
+                                    academicStaffYear: value,
+                                }));
+                            }
+                        }}
+                    />
+
+
                 </div>
             </Field>
 

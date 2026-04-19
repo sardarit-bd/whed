@@ -1,3 +1,5 @@
+'use client';
+
 import {
     ChevronLeft,
     ChevronRight,
@@ -10,8 +12,8 @@ import {
     SlidersHorizontal,
     Trash2
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-
 
 const allData = [
     { id: 1234, globalId: "IAU-0\n01234", status: "Data Provider unknown", name: "Harvard University", branch: "", nameEn: "Harvard University", branchEn: "" },
@@ -37,6 +39,8 @@ const statusColor = (status) => {
 };
 
 export default function InstitutionsTab({ activeTab = "institutions", onTabChange }) {
+
+    const router = useRouter();
     const [tab, setTab] = useState(activeTab);
     const [perPage, setPerPage] = useState(20);
     const [page, setPage] = useState(1);
@@ -202,7 +206,7 @@ export default function InstitutionsTab({ activeTab = "institutions", onTabChang
                         </thead>
                         <tbody>
                             {(pageData.length > 0 ? pageData : filtered.slice(0, perPage)).map((row, i) => (
-                                <tr key={`${row.id}-${i}`} className={`border-b border-gray-200 ${i % 2 === 0 ? "bg-white" : "bg-gray-50"} hover:bg-teal-50`}>
+                                <tr onClick={() => { router.push("/dashboard/addrecord") }} key={`${row.id}-${i}`} className={`cursor-pointer border-b border-gray-200 ${i % 2 === 0 ? "bg-white" : "bg-gray-50"} hover:bg-teal-50`}>
                                     <td className="px-3 py-2 text-[var(--primary-color)] font-medium cursor-pointer hover:underline">{row.id}</td>
                                     <td className="px-3 py-2 text-[var(--primary-color)] text-xs whitespace-pre-line">{row.globalId}</td>
                                     <td className={`px-3 py-2 text-xs ${statusColor(row.status)}`}>{row.status}</td>

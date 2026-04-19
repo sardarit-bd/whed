@@ -28,7 +28,7 @@ const ChevronIcon = ({ open }) => (
 
 const Section = ({ title }) => (
   <div className="px-6 py-4 text-sm text-gray-400 italic">
-    No data available for {title}.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis suscipit corporis vel, ipsa magni laudantium facere velit ipsam fugit dolorem sequi nemo porro excepturi doloremque molestias nisi a esse. Quis laudantium commodi necessitatibus quo, ducimus fugit assumenda atque dicta nemo amet expedita dolorum perspiciatis nulla, dolorem quas maiores exercitationem, iure voluptatum ex consequuntur adipisci reprehenderit temporibus placeat explicabo. Quidem iste ut blanditiis nobis quisquam, expedita dolor natus, magni corrupti neque facere voluptatem commodi dolorum ad.
   </div>
 );
 
@@ -62,13 +62,14 @@ export function InstitutionTypesList() {
   );
 }
 
-const AccordionItem = ({ title, defaultOpen = false, children }) => {
-  const [open, setOpen] = useState(defaultOpen);
-
+const AccordionItem = ({ title, open, onToggle, children }) => {
   return (
-    <div className={`border rounded-lg mb-3 overflow-hidden transition-all duration-200 ${open ? "border rounded-xl border-gray-200" : "border border-l-4 border-[var(--primary-color)]"}`}>
+    <div
+      id={title}
+      className={`border rounded-lg mb-3 overflow-hidden transition-all duration-200 ${open ? "border rounded-xl border-gray-200" : "border border-l-4 border-[var(--primary-color)]"}`}
+    >
       <button
-        onClick={() => setOpen(!open)}
+        onClick={onToggle}
         className={`w-full flex items-center justify-between px-6 py-4 text-left transition-colors duration-200 ${open ? "bg-gray-50" : "bg-white hover:bg-gray-50"}`}
       >
         <span className={`text-base font-semibold ${open ? "text-cyan-700" : "text-gray-800"}`}>
@@ -76,7 +77,6 @@ const AccordionItem = ({ title, defaultOpen = false, children }) => {
         </span>
         <ChevronIcon open={open} />
       </button>
-
       <div className={`transition-all duration-300 ease-in-out overflow-hidden ${open ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}`}>
         {children}
       </div>
@@ -86,18 +86,52 @@ const AccordionItem = ({ title, defaultOpen = false, children }) => {
 
 export default function Accordion() {
   const [activeNav, setActiveNav] = useState("Types of HEI");
+  const [openSection, setOpenSection] = useState("Types of HEI");
+
+  // const handleNavClick = (item) => {
+  //   setActiveNav(item);
+  //   setOpenSection(item);
+  //   setTimeout(() => {
+  //     const el = document.getElementById(item);
+  //     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  //   }, 50); // small delay lets the accordion open before scrolling
+  // };
+
+
+
+  const handleNavClick = (item) => {
+    setActiveNav(item);
+
+    // First scroll to the element (while it may still be closed)
+    const el = document.getElementById(item);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // Open the section slightly after so the scroll destination is stable
+    setTimeout(() => {
+      setOpenSection(item);
+    }, 100);
+  };
+
+
+  const handleToggle = (title) => {
+    setOpenSection((prev) => (prev === title ? null : title));
+    setActiveNav(title);
+  };
 
   return (
     <div className="my-10">
       <div className="mx-auto flex gap-6">
-        {/* Sidebar */}
-        <aside className="w-64 hidden md:block flex-shrink-0 border rounded-xl border-gray-200 p-4">
+
+        {/* Sidebar — sticky */}
+        <aside className="w-64 hidden md:block flex-shrink-0 border rounded-xl border-gray-200 p-4 sticky top-6 self-start">
           <p className="text-xs font-bold text-[var(--primary-text)] uppercase tracking-widest mb-3 px-2">Contents</p>
           <nav className="flex flex-col gap-0.5">
             {navItems.map((item) => (
               <button
                 key={item}
-                onClick={() => setActiveNav(item)}
+                onClick={() => handleNavClick(item)}
                 className={`text-left text-sm px-3 py-2 rounded-md transition-colors duration-150 cursor-pointer ${activeNav === item
                   ? "text-[var(--primary-color)] font-semibold"
                   : "text-[var(--primary-text)] hover:text-gray-900"
@@ -111,33 +145,29 @@ export default function Accordion() {
 
         {/* Main Content */}
         <main className="flex-1 w-full">
-          <AccordionItem title="Types of HEI" defaultOpen={true}>
+          <AccordionItem title="Types of HEI" open={openSection === "Types of HEI"} onToggle={() => handleToggle("Types of HEI")}>
             <InstitutionTypesList />
           </AccordionItem>
-
-          <AccordionItem title="Pre-Higher Education System">
+          <AccordionItem title="Pre-Higher Education System" open={openSection === "Pre-Higher Education System"} onToggle={() => handleToggle("Pre-Higher Education System")}>
             <SchoolSystemInfo />
           </AccordionItem>
-
-          <AccordionItem title="Higher Education System">
+          <AccordionItem title="Higher Education System" open={openSection === "Higher Education System"} onToggle={() => handleToggle("Higher Education System")}>
             <Section title="Divisions" />
           </AccordionItem>
-
-          <AccordionItem title="Bodies">
+          <AccordionItem title="Bodies" open={openSection === "Bodies"} onToggle={() => handleToggle("Bodies")}>
             <Section title="Degrees" />
           </AccordionItem>
-
-          <AccordionItem title="Recognition of Studies">
+          <AccordionItem title="Recognition of Studies" open={openSection === "Recognition of Studies"} onToggle={() => handleToggle("Recognition of Studies")}>
             <Section title="Academic Periodicals" />
           </AccordionItem>
-
-          <AccordionItem title="Credentials">
+          <AccordionItem title="Credentials" open={openSection === "Credentials"} onToggle={() => handleToggle("Credentials")}>
             <Section title="Student & Staff Numbers" />
           </AccordionItem>
-          <AccordionItem title="Data Provided">
+          <AccordionItem title="Data Provided" open={openSection === "Data Provided"} onToggle={() => handleToggle("Data Provided")}>
             <Section title="Data Provided" />
           </AccordionItem>
         </main>
+
       </div>
     </div>
   );

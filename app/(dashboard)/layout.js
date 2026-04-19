@@ -216,7 +216,7 @@ export default function WHEDDashboard({ children }) {
                     {/* Action buttons */}
                     <div className="flex items-center gap-2 shrink-0">
                         <button className="hidden sm:block border border-gray-300 text-gray-700 text-xs sm:text-sm font-normal px-3 sm:px-4 py-1.5 rounded hover:bg-gray-50 active:bg-gray-100 transition-colors whitespace-nowrap">
-                            Global Symthesis
+                            Global Synthesis
                         </button>
                         <button className="border border-gray-300 text-gray-700 text-xs sm:text-sm font-normal px-3 sm:px-4 py-1.5 rounded hover:bg-gray-50 active:bg-gray-100 transition-colors whitespace-nowrap">
                             <span className="sm:hidden">Synthesis</span>

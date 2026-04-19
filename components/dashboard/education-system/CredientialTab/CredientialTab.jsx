@@ -13,16 +13,58 @@ import { useState } from "react";
 
 
 const initialData = [
-    { id: 1701, credential: "Advanced High School (VWO) Certificate", acronym: "", levelCode: "3A", cat1: "Certificate", cat2: "", major: "2021-10-05 13:16:20", minor: "2021-10-05 13:18:20" },
-    { id: 1699, credential: "Bachelor", acronym: "", levelCode: "GB", cat1: "Degree", cat2: "", major: "2021-10-05 13:16:43", minor: "2021-10-05 13:16:43" },
-    { id: 1703, credential: "HAVO Diploma", acronym: "", levelCode: "3A", cat1: "Diploma", cat2: "", major: "2021-10-05 13:16:49", minor: "2021-10-05 13:16:49" },
-    { id: 1700, credential: "Master", acronym: "", levelCode: "7C", cat1: "Degree", cat2: "", major: "2021-10-05 13:16:56", minor: "2021-10-05 13:16:56" },
+    {
+        id: 1701,
+        credential: "Advanced High School (VWO) Certificate",
+        acronym: "",
+        levelCode: "3A",
+        cat1: "Certificate",
+        cat2: "",
+        major: "2021-10-05 13:16:20",
+        minor: "2021-10-05 13:18:20"
+    },
+
+    {
+        id: 1703,
+        credential: "HAVO Diploma",
+        acronym: "",
+        levelCode: "3A",
+        cat1: "Diploma",
+        cat2: "",
+        major: "2021-10-05 13:16:49",
+        minor: "2021-10-05 13:16:49"
+    },
+
+    {
+        id: 1699,
+        credential: "Bachelor",
+        acronym: "",
+        levelCode: "6B",
+        cat1: "Degree",
+        cat2: "",
+        major: "2021-10-05 13:16:43",
+        minor: "2021-10-05 13:16:43"
+    },
+
+
+
+    {
+        id: 1700,
+        credential: "Master",
+        acronym: "",
+        levelCode: "7C",
+        cat1: "Degree",
+        cat2: "",
+        major: "2021-10-05 13:16:56",
+        minor: "2021-10-05 13:16:56"
+    },
+
 ];
 
 const catColor = (cat) => {
-    if (cat === "Certificate") return "text-orange-500";
-    if (cat === "Degree") return "text-teal-600";
-    if (cat === "Diploma") return "text-orange-400";
+    if (cat === "Certificate") return "text-gray-600"; //text-orange-500
+    if (cat === "Degree") return "text-gray-600"; //text-teal-600
+    if (cat === "Diploma") return "text-gray-600"; //text-orange-400
     return "text-gray-600";
 };
 

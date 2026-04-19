@@ -70,7 +70,7 @@ function DivisionsTab() {
                 <input className={inputBase} value={form.moreDetails} onChange={set("moreDetails")} {...focus} />
             </Field>
 
-            <ContentSaveComponnent />
+
 
             {/* <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-5 mb-8 p-3 rounded-xl border border-gray-100 bg-gray-50/60">
                 <p className="flex items-center gap-2 text-xs" style={{ color: "#e24b4a" }}>
@@ -156,6 +156,10 @@ function DivisionsTab() {
                     </button>
                 </div>
             </div>
+
+
+
+            <ContentSaveComponnent />
 
         </div>
     );

@@ -19,7 +19,7 @@ const ContentSaveComponnent = () => {
                     className="px-4 py-2 text-sm rounded-lg text-white font-medium cursor-pointer transition-opacity hover:opacity-90"
                     style={{ backgroundColor: "var(--primary-color)" }}
                 >
-                    Save (Minor)
+                    Save (minor)
                 </button>
                 <button
                     className="px-4 py-2 text-sm rounded-lg text-white font-medium cursor-pointer transition-opacity hover:opacity-80"
@@ -28,7 +28,7 @@ const ContentSaveComponnent = () => {
                         filter: "brightness(0.88)",
                     }}
                 >
-                    Save (Major)
+                    Save (MAJOR)
                 </button>
             </div>
         </div>

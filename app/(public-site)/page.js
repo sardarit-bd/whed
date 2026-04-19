@@ -106,7 +106,7 @@ const HomePage = () => {
             <p className="text-center text-[#4A5565] text-xl leading-tight mb-4 my-5">
               The unique database providing <i className="text-[var(--primary-color)] font-semibold">authoritative information</i> on higher education systems, credentials, and institutions globally
             </p>
-            <div className="relative my-5">
+            <div className="relative my-5 hidden">
 
               <select
                 value={searchCountry}
@@ -147,10 +147,22 @@ const HomePage = () => {
               <WorldMembersMap handleCountryClick={handleCountryClick} />
 
 
-              <div className="hidden text-center p-5 text-gray-400 flex flex-col items-center gap-3 justify-center h-full">
-                <h2 className="text-2xl font-bold text-[var(--primary-color)]"> World Map Coming Soon!</h2>
-                In the meantime, select a country from the dropdown above to explore its HEI data.
+
+              {/* STATS ROW */}
+              <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
+                {[
+                  { value: "21,696", label: "Recognized Institutions" },
+                  { value: "193", label: "Countries" },
+                  { value: "000", label: "Number of degrees" },
+                ].map((stat, i) => (
+                  <div key={i} className="bg-white rounded-xl py-8 px-5 text-center">
+                    <p className="text-2xl font-black text-[var(--secondary-color)] tracking-tight">{stat.value}</p>
+                    <p className="text-lg text-[var(--text-primary)] mt-2">{stat.label}</p>
+                  </div>
+                ))}
               </div>
+
+
 
 
             </div>
@@ -231,7 +243,7 @@ const HomePage = () => {
         </div>
 
         {/* STATS ROW */}
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
+        <div className="hidden grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
           {[
             { value: "21,696", label: "Recognized Institutions" },
             { value: "193", label: "Countries" },

@@ -41,38 +41,44 @@ function StatisticsTab() {
     const MFTRow = ({ label, mKey, fKey, tKey }) => (
         <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr] gap-2 sm:gap-4 items-center py-2">
             <label className="text-sm text-gray-500">{label}</label>
-            <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-sm text-gray-500 w-10">Male</span>
-                <input
-                    className={`${inputBase} w-24`}
-                    type="number"
-                    min="0"
-                    value={form[mKey]}
-                    onChange={(e) => {
-                        set(mKey)(e);
-                        setForm((f) => ({ ...f, [mKey]: e.target.value, [tKey]: autoTotal(e.target.value, f[fKey]) }));
-                    }}
-                    {...focus}
-                />
-                <span className="text-sm text-gray-500 w-12 text-center">Female</span>
-                <input
-                    className={`${inputBase} w-24`}
-                    type="number"
-                    min="0"
-                    value={form[fKey]}
-                    onChange={(e) => {
-                        setForm((f) => ({ ...f, [fKey]: e.target.value, [tKey]: autoTotal(f[mKey], e.target.value) }));
-                    }}
-                    {...focus}
-                />
-                <span className="text-sm text-gray-500 w-8 text-center">Total</span>
-                <input
-                    className={`${inputBase} w-24 bg-gray-50`}
-                    type="number"
-                    value={form[tKey]}
-                    readOnly
-                    placeholder="0"
-                />
+            <div className="flex items-center gap-2 justify-between">
+                <div className="w-full flex items-center gap-3">
+                    <span className="text-sm text-gray-500 w-10">Male</span>
+                    <input
+                        className={`${inputBase} w-24`}
+                        type="number"
+                        min="0"
+                        value={form[mKey]}
+                        onChange={(e) => {
+                            set(mKey)(e);
+                            setForm((f) => ({ ...f, [mKey]: e.target.value, [tKey]: autoTotal(e.target.value, f[fKey]) }));
+                        }}
+                        {...focus}
+                    />
+                </div>
+                <div className="w-full flex items-center gap-3">
+                    <span className="text-sm text-gray-500 w-12 text-center">Female</span>
+                    <input
+                        className={`${inputBase} w-24`}
+                        type="number"
+                        min="0"
+                        value={form[fKey]}
+                        onChange={(e) => {
+                            setForm((f) => ({ ...f, [fKey]: e.target.value, [tKey]: autoTotal(f[mKey], e.target.value) }));
+                        }}
+                        {...focus}
+                    />
+                </div>
+                <div className="w-full flex items-center gap-3">
+                    <span className="text-sm text-gray-500 w-8 text-center">Total</span>
+                    <input
+                        className={`${inputBase} w-24 bg-gray-50`}
+                        type="number"
+                        value={form[tKey]}
+                        readOnly
+                        placeholder="0"
+                    />
+                </div>
             </div>
         </div>
     );
@@ -97,7 +103,7 @@ function StatisticsTab() {
             <MFTRow label="Teaching Staff" mKey="teachingMale" fKey="teachingFemale" tKey="teachingTotal" />
             <MFTRow label="Academic Staff with doctorate" mKey="doctorateMale" fKey="doctorateFemale" tKey="doctorateTotal" />
 
-            <div className="h-px bg-gray-100 my-5" />
+            <div className="h-px bg-gray-200 my-5" />
 
             {/* Students Section */}
             <Field label="Students Statistics Year">
@@ -114,8 +120,7 @@ function StatisticsTab() {
 
             <MFTRow label="Students" mKey="studentsMale" fKey="studentsFemale" tKey="studentsTotal" />
             <MFTRow label="International Students" mKey="intlMale" fKey="intlFemale" tKey="intlTotal" />
-
-            <div className="h-px bg-gray-100 my-5" />
+            <div className="h-px bg-gray-200 my-5" />
 
             {/* Other Fields */}
             <Field label="Distance / Online Learning">

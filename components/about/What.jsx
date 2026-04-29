@@ -29,22 +29,16 @@ export default function WhatIsWhed() {
                     </h2>
 
                     <p className="text-[18px] text-[#2c2c2c] leading-7 mb-4">
-                        Globally recognized as a reliable source of information, the WHED provides
-                        information on around{" "}
-                        <strong className="font-bold text-black">
-                            21,696 higher education institutions (HEIs)
-                        </strong>{" "}
-                        in <strong className="font-bold text-black">193 countries and territories</strong>.
+
+
+                        The World Higher Education Database (WHED) is the International Association of Universities’ (IAU) online reference portal that provides comprehensive information on higher education systems, credentials and just under <b>22,000 institutions</b> in some <b>190 countries</b> and territories.
                     </p>
 
                     <p className="text-[18px] text-[#2c2c2c] leading-7 mb-4">
-                        Since 1950 and in collaboration with UNESCO, the WHED is recognized as an official
-                        source of information on HEIs by national higher education authorities, governmental
-                        agencies and/or national academic bodies at global level. In collaboration with
-                        UNESCO, the IAU WHED Portal provides authoritative information on:
+                        The WHED is a key resource for the implementation of the UNESCO Global Convention on the Recognition of Qualifications concerning Higher Education, as, in line with Article 8 of the Convention, it provides up-to-date, clear information on national higher education systems, credentials and accredited / recognized higher education institutions. It also provides a unique identifier for each institution listed, the Global WHED ID. The WHED thus functions as a trusted source for facilitating recognition, and for combatting - therefore supporting integrity in higher education, building trust across all higher education systems across the globe - a key objective of the Global Convention.
                     </p>
 
-                    <ul className="list-none p-0 my-5 space-y-3">
+                    <ul className="list-none p-0 my-5 space-y-3 hidden">
                         <li className="flex items-start gap-2.5 text-[18px] text-[#2c2c2c] leading-relaxed">
                             <CheckCircleIcon />
                             <span>Higher education systems and credentials</span>
@@ -58,7 +52,7 @@ export default function WhatIsWhed() {
                         </li>
                     </ul>
 
-                    <p className="text-[18px] text-[#2c2c2c] leading-7">
+                    <p className="text-[18px] text-[#2c2c2c] leading-7 hidden">
                         Each HEI listed in the WHED is identified with a unique identifier: the{" "}
                         <a
                             href="#"

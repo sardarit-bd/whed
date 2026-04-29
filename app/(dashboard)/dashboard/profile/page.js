@@ -83,6 +83,8 @@ export default function UserProfileForm() {
     const handleSave = (e) => {
         e.preventDefault();
         alert("Profile saved!");
+
+        console.log(formData);
     };
 
     const handleCancel = () => {

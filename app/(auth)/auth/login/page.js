@@ -118,7 +118,7 @@ export default function WHEDLogin() {
                                     <button
                                         type="button"
                                         onClick={handleReset}
-                                        className="px-5 py-1.5 text-sm font-medium text-gray-600 border border-gray-300 rounded-sm hover:bg-gray-50 transition-colors cursor-pointer"
+                                        className="hidden px-5 py-1.5 text-sm font-medium text-gray-600 border border-gray-300 rounded-sm hover:bg-gray-50 transition-colors cursor-pointer"
                                     >
                                         Reset
                                     </button>

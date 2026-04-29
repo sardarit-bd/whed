@@ -1,27 +1,25 @@
 "use client";
-import { Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function WHEDLogin() {
-    const [login, setLogin] = useState("");
-    const [password, setPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
+
+    const router = useRouter();
+    const [email, setemail] = useState("");
 
     const handleValidate = (e) => {
         e.preventDefault();
         // Add your auth logic here
-        console.log("Validate:", { login, password });
+        console.log("Validate:", { email });
     };
 
     const handleReset = () => {
-        setLogin("");
-        setPassword("");
+        setemail("");
     };
 
     const handleCancel = () => {
-        setLogin("");
-        setPassword("");
+        router.push('/auth/login');
     };
 
     return (
@@ -64,35 +62,11 @@ export default function WHEDLogin() {
                                 </label>
                                 <input
                                     type="text"
-                                    value={login}
-                                    onChange={(e) => setLogin(e.target.value)}
+                                    value={email}
+                                    onChange={(e) => setemail(e.target.value)}
                                     placeholder="Enter your Email"
                                     className="flex-1 border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-700 placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#1a7fa8]/40 focus:border-[#1a7fa8] transition-all"
                                 />
-                            </div>
-
-                            {/* Password field */}
-                            <div className=" hidden flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                                <label className="text-sm font-semibold text-gray-700 sm:w-24 shrink-0">
-                                    Password
-                                </label>
-                                <div className="flex-1 relative">
-                                    <input
-                                        type={showPassword ? "text" : "password"}
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        placeholder="Enter your password"
-                                        className="w-full border border-gray-300 rounded-md px-3 py-2 pr-10 text-sm text-gray-700 placeholder-gray-400 outline-none focus:ring-2 focus:ring-[#1a7fa8]/40 focus:border-[#1a7fa8] transition-all"
-                                    />
-                                    <button
-                                        type="button"
-                                        onClick={() => setShowPassword((p) => !p)}
-                                        className="absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
-                                        tabIndex={-1}
-                                    >
-                                        {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
-                                    </button>
-                                </div>
                             </div>
 
                             {/* Forgotten password + action buttons */}
@@ -118,7 +92,7 @@ export default function WHEDLogin() {
                                         type="submit"
                                         className="px-5 py-1.5 text-sm font-semibold text-white bg-[#1a7fa8] rounded-sm hover:bg-[#155f80] transition-colors shadow-sm cursor-pointer"
                                     >
-                                        Validate
+                                        Send OTP
                                     </button>
                                 </div>
                             </div>

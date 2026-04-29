@@ -15,22 +15,11 @@ export default function WhoProvides() {
                     </h2>
 
                     <p className="text-[18px] text-[#2c2c2c] leading-7 mb-5">
-                        Information on education systems, credentials and institutions is based upon data
-                        provided by national competent bodies, including the{" "}
-                        <strong className="font-bold text-[#1a1a1a]">
-                            ENIC NARIC (European Network of Information Centres – National Academic
-                            Recognition Information Centres) Networks
-                        </strong>
-                        . Information is also sought on official websites of the various national competent bodies.
-                    </p>
-
-                    <p className="text-[18px] text-[#2c2c2c] leading-7 mb-6">
-                        For each education system, the source of information is indicated at the end of the
-                        information sheet, as well as the year the information was last updated.
+                        The information in the WHED is compiled using information made available by the national competent bodies in each country. IAU also carries out desk research to complement this information. Data is also collected from institutions listed in the WHED on academic programmes and credentials offered.
                     </p>
 
                     {/* Callout Box */}
-                    <div className="border-l-4 border-[#1a9a8a] bg-[#f8fbfb] rounded-md px-5 py-4">
+                    <div className="border-l-4 border-[#1a9a8a] bg-[#f8fbfb] rounded-md px-5 py-4 hidden">
                         <p className="text-[18px] text-[#2c2c2c] leading-7 mb-3">
                             For each higher education institution:
                         </p>

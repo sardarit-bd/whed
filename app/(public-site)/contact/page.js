@@ -23,7 +23,7 @@ export default function ContactUsPage() {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
                         </div>
-                        <p className="font-bold text-gray-800 mb-1">Email Us</p>
+                        <p className="font-bold text-gray-800 mb-1">Email the WHED Team</p>
                         <a href="mailto:centre@iau.global" className="text-[#1a7a8a] text-sm hover:underline mb-1">centre@iau.global</a>
                         <p className="text-xs text-gray-500">For general inquiries about the WHED Portal</p>
                     </div>
@@ -36,8 +36,8 @@ export default function ContactUsPage() {
                             </svg>
                         </div>
                         <p className="font-bold text-gray-800 mb-1">IAU Membership</p>
-                        <a href="mailto:membership@iau.global" className="text-[#1a7a8a] text-sm hover:underline mb-1">membership@iau.global</a>
-                        <p className="text-xs text-gray-500">For questions about IAU membership</p>
+                        <a href="https://iau.global/membership" className="text-[#1a7a8a] text-sm hover:underline mb-1">iau.global/membership</a>
+                        <p className="text-xs text-gray-500">Learn more about membership</p>
                     </div>
 
                     {/* Social Media */}

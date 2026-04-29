@@ -101,10 +101,9 @@ export default function WhatKindOfInformation() {
                         Education Systems &amp; Credentials
                     </h3>
                     <p className="text-[18px] text-[#2c2c2c] leading-7 mb-4">
-                        The WHED provides information on the structure of each country's higher education system
-                        and credentials. It is comprised of information on:
+                        The WHED provides information on the structure of each country’s higher education system, from primary through to higher education, and explains the main credentials awarded within the country. It also provides information on national competent bodies responsible for higher education, as well as higher education organizations and associations located in a particular country.
                     </p>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 hidden">
                         {educationItems.map((item, i) => (
                             <li key={i} className="flex items-start gap-2 text-[18px] text-[#2c2c2c] leading-7">
                                 <CheckCircleIcon />
@@ -122,10 +121,11 @@ export default function WhatKindOfInformation() {
                         Higher education institutions (HEIs)
                     </h3>
                     <p className="text-[18px] text-[#2c2c2c] leading-7 mb-5">
+                        The WHED provides institutional profiles for all institutions meeting the inclusion criteria1 for the database, such as location, historical data, credentials and fields of studies.  Each institution also has a permalink, allowing easy access to individual institution profiles.
                         This section is divided into 4 sections.
                     </p>
 
-                    <div className="space-y-5">
+                    <div className="space-y-5 hidden">
                         {heiSubSections.map(({ title, content }) => (
                             <div key={title}>
                                 <div className="flex items-center gap-2 mb-2">

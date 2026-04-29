@@ -29,11 +29,7 @@ export default function Whedid() {
                         What is the Global WHED ID?
                     </h1>
                     <p className="text-[18px] leading-relaxed text-gray-600">
-                        The constant and rapid development of the higher education landscape, on all continents,
-                        triggered discussions with key stakeholders on the need to facilitate the identification
-                        of higher education institutions. This led to the development of a new feature called
-                        Global WHED ID, which uniquely identifies each higher education institution listed in the
-                        World Higher Education Database (WHED).
+                        Each institution in the WHED has its own unique code, the Global WHED ID, which makes those institutions in the WHED easy to identify. These were created within the context of the Global Convention to aid transparency and access to accurate information on States Parties’ higher education systems and qualifications.
                     </p>
                 </section>
 

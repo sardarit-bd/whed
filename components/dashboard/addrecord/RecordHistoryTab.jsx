@@ -192,7 +192,7 @@ function RecordHistoryTab() {
                     <table className="w-full text-sm" style={{ minWidth: 700 }}>
                         <thead>
                             <tr className="border-b border-gray-100 bg-gray-50">
-                                {["Date & Time", "Edited By", "Field Changed", "Old Value", "New Value", "Action", "Restore"].map(h => (
+                                {["Date & Time", "Edited By", "Field Changed", "Old Value", "New Value", "Action"].map(h => (
                                     <th key={h} className="text-left text-xs font-medium text-gray-500 px-3 py-3 whitespace-nowrap">{h}</th>
                                 ))}
                             </tr>
@@ -210,7 +210,7 @@ function RecordHistoryTab() {
                                     <td className="px-3 py-2.5 text-xs text-gray-500 max-w-[120px] truncate">{row.oldValue}</td>
                                     <td className="px-3 py-2.5 text-xs text-gray-700 max-w-[160px] truncate">{row.newValue}</td>
                                     <td className="px-3 py-2.5">{actionBadge(row.action)}</td>
-                                    <td className="px-3 py-2.5">
+                                    <td className="px-3 py-2.5 hidden">
                                         <button
                                             className="flex items-center gap-1 text-xs font-medium cursor-pointer transition-opacity hover:opacity-70"
                                             style={{ color: "var(--primary-color)" }}

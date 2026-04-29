@@ -9,8 +9,8 @@ import {
     SlidersHorizontal,
     Trash2
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-
 
 const initialData = [
     {
@@ -70,6 +70,7 @@ const catColor = (cat) => {
 
 export default function CredientialTab({ activeTab = "credentials", onTabChange }) {
 
+    const router = useRouter();
     const [data] = useState(initialData);
     const [perPage, setPerPage] = useState(20);
     const [search, setSearch] = useState({ id: "", credential: "", acronym: "", levelCode: "", cat1: "", cat2: "", major: "", minor: "" });
@@ -94,6 +95,27 @@ export default function CredientialTab({ activeTab = "credentials", onTabChange 
         if (onTabChange) onTabChange(key);
     };
 
+
+
+
+
+    const controller = (e, label) => {
+        if (label === "Add a Credential") {
+            router.push("/dashboard/educationsystem/credentials");
+        }
+        if (label === "Export All") {
+            alert("Export All");
+        }
+        if (label === "Print All") {
+            alert("Print All");
+        }
+        if (label === "See Snapshot") {
+            alert("See Snapshot");
+        }
+    }
+
+
+
     return (
         <div className="min-h-screen bg-gray-100 font-sans">
 
@@ -108,8 +130,8 @@ export default function CredientialTab({ activeTab = "credentials", onTabChange 
                             { icon: Printer, label: "Print All" },
                             { icon: Eye, label: "See Snapshot" },
                         ].map(({ icon: Icon, label }) => (
-                            <button key={label} className="flex flex-col items-center gap-1 group">
-                                <div className="w-12 h-12 border-2 border-[var(--primary-color)] rounded-lg flex items-center justify-center text-[var(--primary-color)] group-hover:bg-teal-50 transition-colors">
+                            <button onClick={(e) => { controller(e, label) }} key={label} className="flex flex-col items-center gap-1 group">
+                                <div className="w-12 h-12 border-2 border-[var(--primary-color)] rounded-lg flex items-center justify-center text-[var(--primary-color)] group-hover:bg-teal-50 transition-colors cursor-pointer">
                                     <Icon size={20} />
                                 </div>
                                 <span className="text-xs text-gray-600 text-center">{label}</span>

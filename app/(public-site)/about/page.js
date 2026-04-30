@@ -1,8 +1,9 @@
 import CountryCondition from "@/components/about/Condition"
+import GlobalID from "@/components/about/GlobalID"
 import WhatKindOfInformation from "@/components/about/Information"
+import List from "@/components/about/List"
 import WhoProvides from "@/components/about/Provide"
 import What from "@/components/about/What"
-import List from "@/components/about/List"
 export default function about() {
   return (
     <>
@@ -10,7 +11,8 @@ export default function about() {
       <WhatKindOfInformation />
       <WhoProvides />
       <CountryCondition />
-      <List/>
+      <List />
+      <GlobalID />
     </>
   )
 }

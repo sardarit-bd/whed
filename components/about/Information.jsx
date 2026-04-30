@@ -89,8 +89,7 @@ export default function WhatKindOfInformation() {
                     What kind of information is in the WHED?
                 </h2>
                 <p className="text-[18px] text-[#2c2c2c] leading-7 text-center max-w-2xl mx-auto mb-10">
-                    The WHED database provides comprehensive information organized at the country level and the
-                    institutional level. Each country profile is divided into two main sections:
+                    The WHED provides comprehensive information organized at the country level and the institutional level. Each country profile is divided into two main sections:
                 </p>
 
                 <hr className="border-[#e0e0e0] mb-8" />

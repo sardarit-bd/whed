@@ -20,7 +20,7 @@ const conditions = [
     },
     {
         title: "Degree-Conferring Institution",
-        desc: "Be a degree-conferring institution offering at least a four-year degree or a four-year professional diploma",
+        desc: "Be a degree-conferring institution offering at least a a first-cycle, bachelor-level degree.",
         variant: "blue",
     },
     {
@@ -28,11 +28,11 @@ const conditions = [
         desc: "Have had at least three cohorts at undergraduate level or its equivalent at a postgraduate institution",
         variant: "blue",
     },
-    {
-        title: "Exemptions",
-        desc: "The WHED does not include institutions offering exclusively military or religious training.",
-        variant: "red",
-    },
+    // {
+    //     title: "Exemptions",
+    //     desc: "The WHED does not include institutions offering exclusively military or religious training.",
+    //     variant: "red",
+    // },
 ];
 
 const furtherItems = [

@@ -46,7 +46,7 @@ const countries = [
 
 export default function CountryCondition() {
     return (
-        <section className="bg-white px-12 py-16 ">
+        <section className="bg-white px-12 py-16 hidden">
             <div className="cs-container mx-auto">
 
                 {/* Header */}
